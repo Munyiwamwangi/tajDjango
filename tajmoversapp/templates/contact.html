@@ -31,32 +31,37 @@
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 <style>
-        #id_description{
+        #id_message{
            
            height: 60px;
            border-color: #ff5e13;
            width: 300px;
+           height: 100px;
            border-radius: 10px;
-           text-align-last: center;
+           text-align-last: left;
        }
-       #id_username{
+       #id_subject{
            
            height: 50px;
            border-color: #ff5e13;
            border-radius:10px;
-           text-align-last: center;
+           width: 300px;
+           text-align-last: left;
        }
-       #id_useremail{
+       #id_from_email{
            
            height: 50px;
            border-color: #ff5e13;
            border-radius: 10px;
-           text-align-last: center;
+           width: 300px;
+           text-align-last: left;
        }
-       #id_destinations{
-        height: 100px;
+       #id_name{
+        height: 50px;
         border-color: #ff5e13;
         border-radius: 10px;
+        width: 300px;
+        text-align-last: left;
     }
     </style>
 <body>
@@ -121,15 +126,15 @@
                                     <div class="card"
                                     style="width: 1000px;border-radius: 10px; box-shadow: 0 40px 15px 0 rgba(0, 0, 0, 0.2); height: 600px; font-weight: 600; border-color: #ff5e13; ">
                                     <div class="card-body" style="padding-top: 90px;">
-                                        <form action="{% url 'contact'%}" method="post" enctype="multipart/form-data"
-                                        style="height: 50px;">
+                                        <form action="{% url 'email'%}" method="post" enctype="multipart/form-data"
+                                        style="height: 60px;">
                     
                                         {% csrf_token %}
                                         {{ form.as_p }}
                     
                     
                                         <div class="form-group text-center">
-                                            <input type="submit" class="btn btn-primary sign-up-button" value="Send">
+                                            <input type="submit" class="btn boxed-btn sign-up-button" value="Send">
                                         </div>
                                         <input type="hidden" name="next" value="">
                                     </form>
