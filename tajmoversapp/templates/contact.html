@@ -65,6 +65,26 @@
     }
     </style>
 <body>
+    <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <!-- flash messages -->
+                    {% if  messages %}
+                    {% for mssg in messages  %}
+                    <div class="alert alert-{{mssg.tags}}">
+                        {{mssg}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <!-- end flash messages -->
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
     <header>
         <div class="header-area">
             <div id="sticky-header" class="main-header-area white-bg">
