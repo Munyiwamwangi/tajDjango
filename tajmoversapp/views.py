@@ -32,34 +32,37 @@ def contact(request):
     else:
         form = ContactForm(request.POST, request.FILES)
         if form.is_valid():
+            name = form.cleaned_data.get('name')
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             from_email = form.cleaned_data['from_email']
-            recipient_list = ['jmunyiwamwangi@gmail.com']
+            
             try:
-                send_mail(subject, message,from_email,recipient_list, fail_silently='False',auth_user=None, auth_password=None)
+                move_request_email(name,subject, message,from_email)
             except BadHeaderError:
                 return HttpResponse('Please recheck email')
             return redirect('success')
     return render(request, "contact.html", {'form': form})
 
-def emailView(request):
-    if request.method == 'GET':
-        form = ContactForm()
-    else:
-        form = ContactForm(request.POST, request.FILES)
-        if form.is_valid():
-            name = form.cleaned_data.get('name')
-            subject = form.cleaned_data['subject']
-            message = form.cleaned_data['message']
-            mail = form.cleaned_data['from_email']
+# def emailView(request):
+#     if request.method == 'GET':
+#         form = ContactForm()
+#     else:
+#         form = ContactForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             name = form.cleaned_data.get('name')
+#             subject = form.cleaned_data['subject']
+#             message = form.cleaned_data['message']
+#             email = form.cleaned_data['from_email']
 
-            try:
-                move_request_email(name,subject, message, mail)
-            except BadHeaderError:
-                return HttpResponse('Please input correct details as directed')
-            return redirect('success')
-    return render(request, "contact.html", {'form': form})
+#             try:
+#                 user = request.user
+#                 if user.is_superuser == True:
+#                     move_request_email(name,subject, message, email)
+#             except BadHeaderError:
+#                 return HttpResponse('Please input correct details as directed')
+#             return redirect('success')
+#     return render(request, "contact.html", {'form': form})
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message. We will reply shortly,')

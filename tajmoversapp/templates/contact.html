@@ -146,7 +146,7 @@
                                     <div class="card"
                                     style="width: 1000px;border-radius: 10px; box-shadow: 0 40px 15px 0 rgba(0, 0, 0, 0.2); height: 600px; font-weight: 600; border-color: #ff5e13; ">
                                     <div class="card-body" style="padding-top: 90px;">
-                                        <form action="{% url 'email'%}" method="post" enctype="multipart/form-data"
+                                        <form action="{% url 'contact'%}" method="post" enctype="multipart/form-data"
                                         style="height: 60px;">
                     
                                         {% csrf_token %}
@@ -154,7 +154,7 @@
                     
                     
                                         <div class="form-group text-center">
-                                            <input type="submit" class="btn boxed-btn sign-up-button" value="Send">
+                                            <input type="submit" class="btn boxed-btn sign-up-button" type="submit">
                                         </div>
                                         <input type="hidden" name="next" value="">
                                     </form>
